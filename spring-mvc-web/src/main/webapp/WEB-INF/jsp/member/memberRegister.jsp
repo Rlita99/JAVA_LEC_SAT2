@@ -17,8 +17,18 @@
 </style>
 </head>
 <body>
+	
+	<!--  등록 폼 입니다. -->
+	<form id="frmRegist" name="frmRegist" method="post" action="/member/memberRegister.do" method="post">
+		<p> NAME : <input type="text" id="userName" name="userName" value="" /> </p>
+		<p> EMAIL : <input type="text" id="userEmail" name="userEmail" value="" /> </p>
+		<p> PASSWORD : <input type="password" id="userPwd" name="userPwd" value="" /> </p>
+		<p> <button> 저장해줘 </button> </p>
+	
+	</form>
+	<br/>
 
-	${memberList}
+	<h1> 등록된 회원 목록 </h1>
 
 	<table style="width:50%">
 		<!--  title 입니다 -->
@@ -32,14 +42,17 @@
 		</tr>
 		
 		<!--  내용 입니다 -->
+		
+		<c:forEach var="member" items="${memberList}" varStatus="status">
 		<tr>
-			<td>10</td>
-			<td>13</td>
-			<td>뇨럐</td>
-			<td>nyorae@gmail.com</td>
-			<td>1**5</td>
+			<td>${memberList.size() - status.index}</td>
+			<td>${member.userNo}</td>
+			<td>${member.userName}</td>
+			<td>${member.userEmail}</td>
+			<td>${member.userPwd}</td>
 			<td>[삭제]</td>
 		</tr>
+		</c:forEach>
 	</table>
 
 </body>
